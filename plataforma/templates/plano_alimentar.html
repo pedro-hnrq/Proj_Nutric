@@ -43,35 +43,43 @@
 
     <div class="fundo-alimentar">
 
+        {% for re in refeicao %}
         <div class="refeicao">
             <div class="head-refeicao">
-                <span>Café da manhã</span>
+                <span>{{re.titulo}}</span>
 
-                <span style="float: right;">07:00h</span>
+                <span style="float: right;">{{re.horario}}</span>
 
             </div>
 
             <div class="body-refeicao">
-                <div class="opcao">
-                    <div class="row">
-                        <div class="col-md-2">
-                            {% if paciente.sexo == "M" %}
-                                <img src="{% static 'plataforma/img/contato_m.png' %}" width="85px" height="110px">
-                            {% else %}
-                                <img src="{% static 'plataforma/img/contato_f.png' %}" width="85px" height="110px">
-                            {% endif %}
-                        </div>
+                {% for o1 in opcao %}
+                    {% if o1.refeicao == re %}
+                        <div class="opcao">
+                            <div class="row">
+                                <div class="col-md-2">
+<!--                                    {% if paciente.sexo == "M" %}-->
+<!--                                        <img src="{% static 'plataforma/img/contato_m.png' %}" width="85px" height="110px">-->
+<!--                                    {% else %}-->
+<!--                                        <img src="{% static 'plataforma/img/contato_f.png' %}" width="85px" height="110px">-->
+<!--                                    {% endif %}-->
+                                     <img src="{{o1.imagem.url}}" width="100%" >
+                                </div>
 
-                        <div class="col-md-10">
-                            Teste 2
+                                <div class="col-md-10">
+                                    {{o1.descricao}}
+                                </div>
+                            </div>
                         </div>
-
-                    </div>
-                </div>
+                        <br>
+                    {% endif %}
+                {% endfor %}
 
             </div>
 
         </div>
+        <br>
+        {% endfor %}
 
     </div>
 
@@ -107,7 +115,7 @@
                         <br>
 
                         <div id="form-refeicao" style="display: block;">
-                            <form action="" method="POST">{% csrf_token %}
+                            <form action="{% url 'refeicao' paciente.id %}" method="POST">{% csrf_token %}
                                 <label for="validationServerUsername">Título</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Ex: Café da manhã" name="titulo">
@@ -153,12 +161,15 @@
 
 
                         <div id="form-opcao" style="display: block;">
-                            <form action="" method="POST" enctype='multipart/form-data'>{% csrf_token %}
+<!--                        Enviar arquivos dentro da tag do form   enctype='multipart/form-data'-->
+                            <form action="{% url 'opcao' paciente.id %}" method="POST" enctype='multipart/form-data'>{% csrf_token %}
 
                                 <label for="validationServerUsername">Selecione a refeição</label>
                                 <div class="input-group">
                                     <select class="form-control" name="refeicao">
-                                        <option value="">Café da manhã</option>
+                                        {% for re in refeicao %}
+                                        <option value="{{re.id}}">{{re.titulo}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
 
