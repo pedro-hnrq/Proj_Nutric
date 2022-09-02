@@ -83,7 +83,8 @@ def dados_paciente(request, id):
         triglicerídios = request.POST.get('triglicerídios')
 
         if (len(peso.strip()) == 0) or (len(altura.strip()) == 0) or (len(gordura.strip()) == 0) or (
-                len(musculo.strip()) == 0) or (len(hdl.strip()) == 0) or (len(ldl.strip()) == 0) or (len(colesterol_total.strip()) == 0) or (len(triglicerídios.strip()) == 0):
+                len(musculo.strip()) == 0) or (len(hdl.strip()) == 0) or (len(ldl.strip()) == 0) or (
+                len(colesterol_total.strip()) == 0) or (len(triglicerídios.strip()) == 0):
             messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
             return redirect('/dados_paciente/')
 
@@ -119,3 +120,19 @@ def grafico_peso(request, id):
     data = {'peso': pesos,
             'labels': labels}
     return JsonResponse(data)
+
+
+def plano_alimentar_listar(request):
+    if request.method == "GET":
+        pacientes = Pacientes.objects.filter(nutri=request.user)
+        return render(request, 'plano_alimentar_listar.html', {'pacientes': pacientes})
+
+
+def plano_alimentar(request, id):
+    paciente = get_object_or_404(Pacientes, id=id)
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/dados_paciente/')
+
+    if request.method == "GET":
+        return render(request, 'plano_alimentar.html', {'paciente': paciente})

@@ -38,7 +38,7 @@
     <br>
     <br>
     <table class="table table-striped">
-        <thead>
+        <thead>![](C:/Users/Pedro/AppData/Local/Temp/2021-01-06.jpg)
             <tr>
             <th scope="col">Peso</th>
             <th scope="col">Altura</th>
@@ -61,40 +61,39 @@
     <div style="width: 80%;">
         <canvas id="myChart"></canvas>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!--    <script src="{% static 'plataforma/js/js.js'%}"></script>-->
+
     <script>
 
         fetch("/grafico_peso/{{paciente.id}}/",{
-            method: 'POST',
-        }).then(function(result){
-            return result.json()
-        }).then(function(data_paciente){
+        method: 'POST',
+    }).then(function(result){
+        return result.json()
+    }).then(function(data_paciente){
 
-            const data = {
-                labels: data_paciente['labels'],
-                datasets: [{
-                label: 'Peso paciente',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: data_paciente['peso'],
-                }]
-            };
+        const data = {
+            labels: data_paciente['labels'],
+            datasets: [{
+            label: 'Peso paciente',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(75, 192, 192)',
+            data: data_paciente['peso'],
+            }]
+        };
 
-            const config = {
-                type: 'line',
-                data: data,
-                options: {}
-            };
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
 
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
 
 
-        })
+    })
 
 
 

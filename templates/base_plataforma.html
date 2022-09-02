@@ -2,6 +2,13 @@
 {% load static %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'plataforma/css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'plataforma/css/plano_alimentar.css' %}">
+
+
+    <script src="{% static 'plataforma/js/exibe.js'%}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'plataforma/js/grafico.js'%}"></script>
 {% endblock %}
 
 {% block 'body' %}
@@ -28,7 +35,7 @@
                   </div>
                 </a>
 
-                <a href="#" class="link-lateral">
+                <a href="{% url 'plano_alimentar_listar' %}" class="link-lateral">
                   <div class="card-lateral">
                       <img src="{% static 'plataforma/img/plano_alimentar.png' %}">
                       <br>
