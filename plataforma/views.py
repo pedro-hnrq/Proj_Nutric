@@ -187,15 +187,15 @@ def opcao(request, id_paciente):
         return redirect(f'/plano_alimentar/{id_paciente}')
 
 
-class gera_pdf (View, GeraPDF):
-    def get(self, request, *args, **kwargs):
-        p1 = Refeicao.objects.all() + Opcao.objects.all()
-        dados = {
-            'Pacintes': p1
-        }
-        template = get_template('plano_alimentar_listrar.html')
-
-        # pdf = render_pdf("plano_alimentar.html")
-        # return HttpResponse(pdf, content_type="aplication/pdf")
-        pdf = GeraPDF()
-        return pdf.render_pdf('/plano_alimentar.html/', dados)
+# class gera_pdf (View, GeraPDF):
+#     def get(self, request, *args, **kwargs):
+#         p1 = Refeicao.objects.all() + Opcao.objects.all()
+#         dados = {
+#             'Pacintes': p1
+#         }
+#         template = get_template('plano_alimentar_listrar.html')
+#
+#         # pdf = render_pdf("plano_alimentar.html")
+#         # return HttpResponse(pdf, content_type="aplication/pdf")
+#         pdf = GeraPDF()
+#         return pdf.render_pdf('/plano_alimentar.html/', dados)
