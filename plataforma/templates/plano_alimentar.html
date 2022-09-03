@@ -1,5 +1,6 @@
 {% extends 'base_plataforma.html' %}
 {% load static %}
+{% block 'titulo' %}Plano Alimentar| NUTRE LIFE{% endblock %}
 {% block 'plataforma' %}
 
     {% if messages %}
@@ -36,7 +37,10 @@
     </button>
 
     <button type="button" onclick="exibe_opcao()" class="btn btn-outline-primary">
+        <a href="{% url 'gera_pdf' %}" target="_blank" class="btn btn-sm btn-success">
         Exportar refeição
+
+        </a>
     </button>
     <br>
     <br>

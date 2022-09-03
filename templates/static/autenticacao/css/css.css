@@ -16,7 +16,7 @@
 
 .sidebar{
 
-    background-image: url();
+    background-image: linear-gradient(232deg, rgba(9,121,101,1) 16%, rgba(8,12,130,1) 29%, rgba(8,134,122,1) 71%, rgba(0,212,255,1) 100%);
 
 }
 
@@ -29,6 +29,7 @@
 .titulo{
 
     font-weight: bold;
+
 
 }
 
@@ -59,9 +60,10 @@
 .btn-first{
 
     border: none;
+    border-radius: 5px;
     padding: 5px 15px 5px 15px;
     font-size: 25px;
-    background-color: #27DB8F;
+    background-color: rgba(30,69,133,1);
     color: white;
     font-weight: bold;
 
