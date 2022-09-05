@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Skranji:wght@700&display=swap" rel="stylesheet">
 
       <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
+<!--      <link rel="stylesheet" href="{% static 'autenticacao/css/base.css' %}">-->
 
     <title>{% block 'titulo' %}{% endblock  %}</title>
   </head>
@@ -27,19 +28,23 @@
     {% if user.is_authenticated %}
       <nav style="background-image: linear-gradient(90deg, rgba(9,121,101,1) 16%, rgba(20,122,124,1) 53%, rgba(30,69,133,1) 92%);" class="navbar navbar-expand-lg navbar-dark">
         <a  style="font-weight: bold; font-family: Skranji, cursive; font-size: 30px"    class="navbar-brand" href="{% url 'pacientes' %}">NUTRI LIFE</a>
-        <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+        <button aria-controls="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-target="#navbarNav" data-toggle="collapse" type="button">
-          <span class="navbar-toggler-icon"></span>
+          <i class="fas fa-bars text-white"></i>
         </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown" align="right">
-              <ul class="navbar-nav" >
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" >
+              <ul class="navbar-nav ml-auto" >
+                   <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                         <li class="nav-item dropdown" >
-                            <a   class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              {{user.username}}
-                            </a>
-                                <div id="itm" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{% url 'sair' %}">Sair</a>
-                                </div>
+
+                                <a   class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fas fa-tachometer-alt"></i>
+                                    {{user.username}}
+                                </a>
+                                    <div id="itm" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="{% url 'sair' %}">Sair</a>
+                                    </div>
+
                         </li>
                     </ul>
           </div>

@@ -1,3 +1,17 @@
+@import url('https://fonts.google.com/specimen/Marko+One');
+.pac{
+    color: #097965;
+    font-weight: bold;
+    font-family: 'Marko One', serif;
+    margin-left: 50%;
+}
+svg{
+    margin-top: -5px;
+}
+.img_lat{
+    width:120px;
+    height:90px;
+}
 .car-lateral{
     overflow: hidden; position: relative;
 }
