@@ -9,6 +9,7 @@ import os
 from django.conf import settings
 from .models import Ativacao
 from hashlib import sha256
+from django.core.mail import send_mail
 
 
 def cadastro(request):
@@ -97,5 +98,6 @@ def ativar_conta(request, token):
     user.save()
     token.ativo = True
     token.save()
+    # send_mail('Assunto', 'Esse é o email que estou te enviando', 'pedr.compras@gmail.com',['henri-17@live.com'])
     messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
     return redirect('/auth/logar')

@@ -1,3 +1,6 @@
+.car-lateral{
+    overflow: hidden; position: relative;
+}
 
 .card-lateral{
 
@@ -10,10 +13,14 @@
     text-align: center;
     box-shadow: 5px 5px 5px gray;
 
+
+
 }
 
 .link-lateral:hover{
-    text-decoration: none;
+    color: #5161ce;
+	background-color: transparent;
+	transition: all 0.7s;
 }
 
 .titulo{

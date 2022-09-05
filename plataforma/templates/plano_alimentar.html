@@ -24,8 +24,8 @@
         </div>
 
         <div class="col-md-3 dados descricao">
-            <h4>{{paciente.nome}}</h4>
-            <h6>{{paciente.idade}} Anos</h6>
+            <h5 class="dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
+            <h6 class="dados">{{paciente.idade}} Anos</h6>
         </div>
 
     </div>
@@ -36,11 +36,8 @@
         + Nova refeição
     </button>
 
-    <button type="button" onclick="exibe_opcao()" class="btn btn-outline-primary">
-        <a href="{% url 'gera_pdf' %}" target="_blank" class="btn btn-sm btn-success">
+    <button type="button" onclick="exibe_opcao()" class="btn btn-outline-primary" >
         Exportar refeição
-
-        </a>
     </button>
     <br>
     <br>

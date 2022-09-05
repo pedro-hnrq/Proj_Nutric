@@ -24,8 +24,10 @@
         </div>
 
         <div class="col-md-3 dados descricao">
-            <h4>{{paciente.nome}}</h4>
-            <h6>{{paciente.idade}} Anos</h6>
+            <h5 class="dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
+            <h6 class="dados">{{paciente.idade}} Anos</h6>
+            <h6 class="dados">E-mail: {{paciente.email}}</h6>
+            <h6 class="dados">Telefone: {{paciente.telefone}}</h6>
         </div>
         
     </div>
@@ -38,7 +40,7 @@
     <br>
     <br>
     <table class="table table-striped">
-        <thead>![](C:/Users/Pedro/AppData/Local/Temp/2021-01-06.jpg)
+        <thead>
             <tr>
             <th scope="col">Peso</th>
             <th scope="col">Altura</th>
@@ -50,7 +52,7 @@
             {% for dado in dados_paciente %}
                 <tr>
                     <th scope="row">{{dado.peso}} Kg</th>
-                    <td>{{dado.altura}} cm</td>
+                    <td>{{dado.altura}} m</td>
                     <td>{{dado.percentual_gordura}} %</td>
                     <td>{{dado.percentual_musculo}} %</td>
                 </tr>

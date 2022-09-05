@@ -14,22 +14,26 @@
     <br>
 	<h1 class="titulo">Escolha o paciente</h1>
     <div  class="row">
-        {% for paciente in pacientes%}
+        {% for paciente in pacientes %}
             <div class="col-md-4">
                 <a href="{% url 'plano_alimentar' paciente.id %}" class="link-hover">
-                    <div class="card-paciente">
+                    <div class="card card-paciente">
                         <div class="foto-perfil">
                            
                             {% if paciente.sexo == "M" %}
-                                <img src="{% static 'plataforma/img/contato_m.png' %}" width="85px" height="110px">
+                                <img src="{% static 'plataforma/img/contato_m.png' %}" width="95px" height="110px">
                             {% else %}
-                                <img src="{% static 'plataforma/img/contato_f.png' %}" width="85px" height="110px">
+                                <img src="{% static 'plataforma/img/contato_f.png' %}" width="95px" height="110px">
                             {% endif %}
                         </div>
                         <br>
-                        <p class="dados">{{paciente.nome}}</p>
-                        <p class="dados">{{paciente.idade}} Anos</p>
-                        <p class="dados">{{paciente.email}}</p>
+
+                        <div class="card-body" align="center">
+                            <h5 class="dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
+
+
+                        </div>
+
                         
                     </div>
                 </a>

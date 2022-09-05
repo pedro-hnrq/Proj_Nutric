@@ -1,3 +1,11 @@
+.navbar-toggler-icon {
+  background-image: none;
+}
+.navbar-toggler-icon::before {
+  font-family: FontAwesome;
+  content: "\f0c9"; /* fa-bars, fa-navicon */
+}
+
 .sidebar{
     background-color: #27DB8F;
     height: 100vh;
@@ -21,8 +29,8 @@
 }
 
 .area_cadastrar{
-    margin-top: 8%;
-    margin-left: 15%;
+    margin-top: 5%;
+    margin-left: 10%;
     width: 70%;
 }
 
@@ -47,7 +55,7 @@
 
 .input-form:focus{
 
-    border: 2px solid #27DB8F !important;
+    border: 3px solid #27DB8F !important;
     outline: 0 !important;
     box-shadow: none !important;
 
