@@ -1,6 +1,7 @@
 {% extends 'base_plataforma.html' %}
 {% load static %}
 {% block 'titulo' %}PACIENTES | NUTRE LIFE{% endblock %}
+<link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
 {% block 'plataforma' %}
 
     {% if messages %}
@@ -31,14 +32,14 @@
                     <div class="foto-perfil">
                         {% if paciente.sexo == "M" %}
                         <img src="{% static 'plataforma/img/contato_m.png' %}"width="95px" height="110px" >
-                        <p class="card-img-overlay" align="right" style="color: #141a7c;">Masculino</p>
+                        <p class="card-img-overlay" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;">M</p>
                         {% else %}
                         <img src="{% static 'plataforma/img/contato_f.png' %}" width="95px" height="110px">
-                        <p class="card-img-overlay" align="right" style="color: #7c145a;">Feminino</p>
+                        <p class="card-img-overlay" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;">F</p>
                         {% endif %}
                     </div>
                     <br>
-                    <div class="card-body" align="center">
+                    <div class="" align="center">
 
                     <h5 class="card-title dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
 <!--                    <p class="dados">{{paciente.idade}} Anos</p>-->

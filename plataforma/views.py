@@ -3,13 +3,14 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages import constants
+
+from nutri_lab.settings import MEDIA_URL
 from .models import Pacientes, DadosPaciente, Refeicao, Opcao
 from datetime import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
-from django.template.loader import get_template
-from nutri_lab.utils import GeraPDF
+from fpdf import FPDF
 
 
 # from django.generic.views import render
@@ -186,6 +187,20 @@ def opcao(request, id_paciente):
         messages.add_message(request, constants.SUCCESS, 'Opção cadastrada')
         return redirect(f'/plano_alimentar/{id_paciente}')
 
+
+def gera_pdf(request, id):
+    if request.method == "GET":
+        pacientes = Pacientes.objects.get(id=id)
+        pdf = FPDF('P','mm', 'A4')
+        pdf.set_font('helvetica', 'BI', size=12)
+        pdf.add_page()
+        pdf.text(20, 20, f'{pacientes}')
+        pdf.set_fill_color(9,121,101)
+        pdf.set_font('helvetica', '', size=14)
+        pdf.text(20, 40, f'{refeicao}')
+        pdf.output(f'{pacientes}.pdf')
+    else:
+        messages.add_message(request, constants.ERROR, 'Erro na requisição...')
 
 # class gera_pdf (View, GeraPDF):
 #     def get(self, request, *args, **kwargs):
