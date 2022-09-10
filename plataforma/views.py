@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages import constants
 
-from nutri_lab.settings import MEDIA_URL
+from django.conf import settings
+import os
 from .models import Pacientes, DadosPaciente, Refeicao, Opcao
 from datetime import datetime
 import json
@@ -112,7 +113,7 @@ def dados_paciente(request, id):
 
         messages.add_message(request, constants.SUCCESS, 'Dados cadastrado com sucesso')
 
-        return redirect('/dados_paciente/')
+        return redirect(f'/dados_paciente/{id}')
 
 
 @login_required(login_url='/auth/logar/')
@@ -187,30 +188,19 @@ def opcao(request, id_paciente):
         messages.add_message(request, constants.SUCCESS, 'Opção cadastrada')
         return redirect(f'/plano_alimentar/{id_paciente}')
 
-
-def gera_pdf(request, id):
-    if request.method == "GET":
-        pacientes = Pacientes.objects.get(id=id)
+@login_required(login_url='/auth/logar/')
+def gera_pdf(request, id_paciente):
+        pacientes = Pacientes.objects.get(id=int(id_paciente))
         pdf = FPDF('P','mm', 'A4')
         pdf.set_font('helvetica', 'BI', size=12)
         pdf.add_page()
-        pdf.text(20, 20, f'{pacientes}')
+        pdf.multi_cell(60, 5, f'Nome: {pacientes.nome} \n'
+                         f' Idade: {pacientes.idade}\n'
+                         f'Email: {pacientes.email}\n')
         pdf.set_fill_color(9,121,101)
         pdf.set_font('helvetica', '', size=14)
         pdf.text(20, 40, f'{refeicao}')
-        pdf.output(f'{pacientes}.pdf')
-    else:
-        messages.add_message(request, constants.ERROR, 'Erro na requisição...')
+        caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
+        pdf.output(caminho_pdf)
+        return redirect(f'/media/pdf/{pacientes.nome}.pdf')
 
-# class gera_pdf (View, GeraPDF):
-#     def get(self, request, *args, **kwargs):
-#         p1 = Refeicao.objects.all() + Opcao.objects.all()
-#         dados = {
-#             'Pacintes': p1
-#         }
-#         template = get_template('plano_alimentar_listrar.html')
-#
-#         # pdf = render_pdf("plano_alimentar.html")
-#         # return HttpResponse(pdf, content_type="aplication/pdf")
-#         pdf = GeraPDF()
-#         return pdf.render_pdf('/plano_alimentar.html/', dados)
