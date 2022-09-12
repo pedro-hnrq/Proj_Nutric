@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.contrib.messages import constants
+import os
+from datetime import datetime
 
 from django.conf import settings
-import os
-from .models import Pacientes, DadosPaciente, Refeicao, Opcao
-from datetime import datetime
-import json
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages import constants
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import View
 from fpdf import FPDF
+
+from autenticacao.models import Ativacao
+from .models import Pacientes, DadosPaciente, Refeicao, Opcao
 
 
 # from django.generic.views import render
@@ -23,6 +24,7 @@ def pacientes(request):
         pacientes = Pacientes.objects.filter(nutri=request.user)
         return render(request, 'pacientes.html', {'pacientes': pacientes})
     elif request.method == "POST":
+        img = request.FILES.get('img')
         nome = request.POST.get('nome')
         sexo = request.POST.get('sexo')
         idade = request.POST.get('idade')
@@ -45,7 +47,8 @@ def pacientes(request):
             return redirect('/pacientes/')
 
         try:
-            paciente = Pacientes(nome=nome,
+            paciente = Pacientes(img=img,
+                                 nome=nome,
                                  sexo=sexo,
                                  idade=idade,
                                  email=email,
@@ -188,19 +191,29 @@ def opcao(request, id_paciente):
         messages.add_message(request, constants.SUCCESS, 'Opção cadastrada')
         return redirect(f'/plano_alimentar/{id_paciente}')
 
+
 @login_required(login_url='/auth/logar/')
 def gera_pdf(request, id_paciente):
-        pacientes = Pacientes.objects.get(id=int(id_paciente))
-        pdf = FPDF('P','mm', 'A4')
-        pdf.set_font('helvetica', 'BI', size=12)
-        pdf.add_page()
-        pdf.multi_cell(60, 5, f'Nome: {pacientes.nome} \n'
-                         f' Idade: {pacientes.idade}\n'
-                         f'Email: {pacientes.email}\n')
-        pdf.set_fill_color(9,121,101)
-        pdf.set_font('helvetica', '', size=14)
-        pdf.text(20, 40, f'{refeicao}')
-        caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
-        pdf.output(caminho_pdf)
-        return redirect(f'/media/pdf/{pacientes.nome}.pdf')
+    pacientes = Pacientes.objects.get(id=int(id_paciente))
+    opcao = Opcao.objects.get(id=int(id_paciente))
+    user = Ativacao.objects.get(id=int(id_paciente))
+    pdf = FPDF('P', 'mm', 'A4')
 
+    pdf.add_page()
+    pdf.set_font('Times', 'B', size=10)
+    pdf.text(80, 8, f'Nutricionista(o) {user.user}')
+    pdf.set_font('helvetica', 'BI', size=12)
+    pdf.set_fill_color(9, 121, 101)
+    pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
+                           f'Idade: {pacientes.idade}\n                         '
+                           f'Email: {pacientes.email}\n                         '
+                           f'Telefone: {pacientes.telefone}\n                         ', border=1)
+
+    # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
+    # pdf.image(f'{opcao.imagem}', 30, 60)
+    pdf.set_font('arial', 'I', size=12)
+    pdf.multi_cell(20, 60, f'Tipo: {opcao.refeicao}\n Descrição: {opcao.descricao}\n ' )
+
+    caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
+    pdf.output(caminho_pdf)
+    return redirect(f'/media/pdf/{pacientes.nome}.pdf')

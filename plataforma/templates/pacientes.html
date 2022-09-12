@@ -30,11 +30,12 @@
             <a href="#" class="link-hover">
                 <div class="card card-paciente">
                     <div class="foto-perfil">
+
                         {% if paciente.sexo == "M" %}
-                        <img src="{% static 'plataforma/img/contato_m.png' %}"width="95px" height="110px" >
+
                         <p class="card-img-overlay" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;">M</p>
                         {% else %}
-                        <img src="{% static 'plataforma/img/contato_f.png' %}" width="95px" height="110px">
+<!--                        <img src="{% static 'plataforma/img/contato_f.png' %}" width="95px" height="110px">-->
                         <p class="card-img-overlay" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;">F</p>
                         {% endif %}
                     </div>
@@ -67,27 +68,26 @@
 
 
                       <div class="row">
-                          <div class="col-md-3">
-                              <label>Foto do Perfil</label>
-                                    <input type="file" class="form-control" placeholder="Perfil" name="perfil">
-                          </div>
-<!--                          <div class="">-->
-<!--                              <img type="file" src="{% static 'plataforma/img/perfil2.png' %}">-->
-<!--                          </div>-->
 
-                          <div class="col-md-9">
-                              <label>Nome:</label>
-                              <input type="text" placeholder="Digite o nome do paciente..." class="form-control" name="nome">
+                          <div class="col-md-5">
+                              <label>Foto Perfil:</label>
+                              <input type="file" class="form-control" placeholder="" name="imagem">
+                          </div>
+
+                          <div class="col-md-6">
+                              <label>Sexo:</label>
+                              <select name="sexo" class="form-control">
+                                  <option value="M">Masculino</option>
+                                  <option value="F">Feminino</option>
+                              </select>
+
                           </div>
 
                       </div>
 
                       <br>
-                      <label>Sexo:</label>
-                      <select name="sexo" class="form-control">
-                          <option value="M">Masculino</option>
-                          <option value="F">Feminino</option>
-                      </select>
+                      <label>Nome:</label>
+                      <input type="text" placeholder="Digite o nome do paciente..." class="form-control" name="nome">
 
                       <br>
 
