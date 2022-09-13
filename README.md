@@ -20,4 +20,4 @@
 </ul>
 
 <h3>Conclusão:</h3>
-<p align="justify">Já estou tendo algumas facilidades de comados no Terminal(ubuntu) ou PowerShellFaltando(windows), agilizando e agregado no desenvolvimento do projeto. Conseguinte, ainda falta codificar a "imagem do paciente, trazer por data a tabela e juntamente o gráfico e organizar todas as informações gerado pelo o PDF".</p>
+<p align="justify">Já estou tendo algumas facilidades de comados no Terminal(ubuntu) ou PowerShell(windows), agilizando e agregado no desenvolvimento do projeto. Conseguinte, ainda falta codificar a "imagem do paciente, trazer por data a tabela e juntamente o gráfico e organizar todas as informações gerado pelo o PDF".</p>
