@@ -32,11 +32,11 @@
                     <div class="foto-perfil">
 
                         {% if paciente.sexo == "M" %}
-
-                        <p class="card-img-overlay" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;">M</p>
+                            <img src="{% static 'plataforma/img/contato_m.png' %}" width="85px" height="110px">
+                            <p class="card-img-overlay" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;">M</p>
                         {% else %}
-<!--                        <img src="{% static 'plataforma/img/contato_f.png' %}" width="95px" height="110px">-->
-                        <p class="card-img-overlay" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;">F</p>
+                            <img src="{% static 'plataforma/img/contato_f.png' %}" width="85px" height="110px">
+                            <p class="card-img-overlay" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;">F</p>
                         {% endif %}
                     </div>
                     <br>
