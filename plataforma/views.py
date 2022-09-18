@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from fpdf import FPDF
+from PIL import Image
 
 from autenticacao.models import Ativacao
 from .models import Pacientes, DadosPaciente, Refeicao, Opcao
@@ -194,6 +195,7 @@ def opcao(request, id_paciente):
 
 @login_required(login_url='/auth/logar/')
 def gera_pdf(request, id_paciente):
+
     pacientes = Pacientes.objects.get(id=int(id_paciente))
     opcao = Opcao.objects.get(id=int(id_paciente))
     user = Ativacao.objects.get(id=int(id_paciente))
@@ -205,14 +207,14 @@ def gera_pdf(request, id_paciente):
     pdf.set_font('helvetica', 'BI', size=12)
     pdf.set_fill_color(9, 121, 101)
     pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
-                           f'Idade: {pacientes.idade}\n                         '
-                           f'Email: {pacientes.email}\n                         '
-                           f'Telefone: {pacientes.telefone}\n                         ', border=1)
+                               f'Idade: {pacientes.idade}\n                         '
+                               f'Email: {pacientes.email}\n                         '
+                               f'Telefone: {pacientes.telefone}\n                         ', border=1)
 
     # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
     # pdf.image(f'{opcao.imagem}', 30, 60)
     pdf.set_font('arial', 'I', size=12)
-    pdf.multi_cell(20, 60, f'Tipo: {opcao.refeicao}\n Descrição: {opcao.descricao}\n ' )
+    pdf.text(20, 60, f'Descrição: {opcao.descricao}\n ' )
 
     caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
     pdf.output(caminho_pdf)
