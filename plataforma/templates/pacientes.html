@@ -32,18 +32,18 @@
                     <div class="foto-perfil">
 
                         {% if paciente.sexo == "M" %}
-                            <img src="{% static 'plataforma/img/contato_m.png' %}" width="85px" height="110px">
+                            <img src="{{paciente.perfil.url}}" width="100%" height="100%">
                             <p class="card-img-overlay" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;">M</p>
                         {% else %}
-                            <img src="{% static 'plataforma/img/contato_f.png' %}" width="85px" height="110px">
+                            <img src="{{paciente.perfil.url}}" width="100%" height="100%">
                             <p class="card-img-overlay" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;">F</p>
                         {% endif %}
                     </div>
                     <br>
                     <div class="" align="center">
 
-                    <h5 class="card-title dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
-<!--                    <p class="dados">{{paciente.idade}} Anos</p>-->
+                        <h5 class="card-title dados" style="font-family: 'Zen Dots', cursive;">{{paciente.nome}}</h5>
+                        <p class="dados">{{paciente.idade}} Anos</p>
 
                     </div>
 
@@ -68,20 +68,11 @@
 
 
                       <div class="row">
+                          <label>Foto Perfil:</label>
+                          <input type="file" class="form-control"  name="perfil">
 
-                          <div class="col-md-5">
-                              <label>Foto Perfil:</label>
-                              <input type="file" class="form-control" placeholder="" name="imagem">
-                          </div>
 
-                          <div class="col-md-6">
-                              <label>Sexo:</label>
-                              <select name="sexo" class="form-control">
-                                  <option value="M">Masculino</option>
-                                  <option value="F">Feminino</option>
-                              </select>
 
-                          </div>
 
                       </div>
 
@@ -91,9 +82,24 @@
 
                       <br>
 
-                      <label>Idade:</label>
-                      <input type="number" placeholder="0" class="form-control" name="idade">
+                      <div class="contrainer">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <label>Idade:</label>
+                                  <input type="number" placeholder="0" class="form-control" name="idade">
+                              </div>
+                              <div class="col-md-6">
+                                  <label >Sexo:</label><br>
+                                  <input name="sexo" type="radio" value="M" id="M"><label for="M" align="right" style="color: #141a7c; font-family: 'Marko One', serif; font-weight: bold;"> Masculino</label>
+                                  <input name="sexo" type="radio" value="F" id="F"><label for="F" align="right" style="color: #7c145a; font-family: 'Marko One', serif; font-weight: bold;"> Feminino</label>
+<!--                                  <select name="sexo" class="form-control">-->
+<!--                                      <option value="M">Masculino</option>-->
+<!--                                      <option value="F">Feminino</option>-->
+<!--                                  </select>-->
+                              </div>
+                          </div>
 
+                          </div>
                       <br>
 
                       <label>E-mail:</label>

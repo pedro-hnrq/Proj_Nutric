@@ -3,6 +3,7 @@ from pathlib import Path
 # from decouple import config
 from django.contrib.messages import constants
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -116,7 +117,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django Message
-from django.contrib.messages import constants
+
 
 MESSAGE_TAGS = {
     constants.DEBUG: 'alert-primary',

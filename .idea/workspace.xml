@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce9238-f780-41ff-944e-a7d896c73a1b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Proj_Nutric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Proj_Nutric.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autenticacao/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/autenticacao/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutri_lab/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutri_lab/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/templates/dados_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/dados_paciente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/templates/dados_paciente_listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/dados_paciente_listar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/templates/pacientes.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/pacientes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/templates/plano_alimentar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/plano_alimentar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/templates/plano_alimentar_listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/plano_alimentar_listar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plataforma/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/media/feitosa/FEITOSA SSD/Vs Code/Python_-_Django/Python/PAGAMENTOS_STRIPE"
+    "last_opened_file_path": "/media/fts/FEITOSA SSD/Vs Code/Proj_Nutric",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "GitStage.ChangesTree.GroupingKeys": [

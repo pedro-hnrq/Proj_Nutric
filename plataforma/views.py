@@ -9,7 +9,6 @@ from django.contrib.messages import constants
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from fpdf import FPDF
 from PIL import Image
 
 from autenticacao.models import Ativacao
@@ -25,7 +24,7 @@ def pacientes(request):
         pacientes = Pacientes.objects.filter(nutri=request.user)
         return render(request, 'pacientes.html', {'pacientes': pacientes})
     elif request.method == "POST":
-        img = request.FILES.get('img')
+        perfil = request.FILES.get('perfil')
         nome = request.POST.get('nome')
         sexo = request.POST.get('sexo')
         idade = request.POST.get('idade')
@@ -48,7 +47,7 @@ def pacientes(request):
             return redirect('/pacientes/')
 
         try:
-            paciente = Pacientes(img=img,
+            paciente = Pacientes(perfil=perfil,
                                  nome=nome,
                                  sexo=sexo,
                                  idade=idade,

@@ -6,7 +6,7 @@ class Pacientes(models.Model):
     objects = None
     choices_sexo = (('F', 'Feminino'),
                     ('M', 'Maculino'))
-    img = models.ImageField(upload_to="paciente")
+    perfil = models.ImageField(upload_to="perfil", null=True)
     nome = models.CharField(max_length=50)
     sexo = models.CharField(max_length=1, choices=choices_sexo)
     idade = models.IntegerField()
