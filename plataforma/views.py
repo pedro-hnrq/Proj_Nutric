@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import os
 from datetime import datetime
-
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -126,7 +125,7 @@ def grafico_peso(request, id):
     dados = DadosPaciente.objects.filter(paciente=paciente).order_by("data")
 
     pesos = [dado.peso for dado in dados]
-    labels = list(range(len(pesos)))
+    labels = [dado.data for dado in dados]
     data = {'peso': pesos,
             'labels': labels}
     return JsonResponse(data)

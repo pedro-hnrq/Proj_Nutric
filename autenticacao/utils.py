@@ -9,26 +9,26 @@ from django.conf import settings
 
 def password_is_valid(request, password, confirm_password):
     if len(password) < 6:
-        messages.add_message(request, constants.ERROR, 'Sua senha deve conter 6 ou mais caractertes')
-        return False
+        
+        return 1
 
     if not password == confirm_password:
-        messages.add_message(request, constants.ERROR, 'As senhas não coincidem!')
-        return False
+        
+        return 2
 
     if not re.search('[A-Z]', password):
         messages.add_message(request, constants.ERROR, 'Sua senha não contem letras maiúsculas')
-        return False
+        return 3
 
     if not re.search('[a-z]', password):
         messages.add_message(request, constants.ERROR, 'Sua senha não contem letras minúsculas')
-        return False
+        return 4
 
     if not re.search('[1-9]', password):
         messages.add_message(request, constants.ERROR, 'Sua senha não contém números')
-        return False
+        return 5
 
-    return True
+    return 6
 
 
 def email_html(path_template: str, assunto: str, para: list, **kwargs) -> dict:

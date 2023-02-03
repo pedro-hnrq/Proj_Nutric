@@ -16,15 +16,25 @@ def cadastro(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect('/')
-        return render(request, 'cadastro.html')
+        senha_erro = request.GET.get("senha_erro")
+        return render(request, 'cadastro.html', {"senha": senha_erro})
     elif request.method == "POST":
         username = request.POST.get('usuario')
         senha = request.POST.get('senha')
         email = request.POST.get('email')
         confirma_senha = request.POST.get('confirmar-senha')
 
-        if not password_is_valid(request, senha, confirma_senha):
-            return redirect('/auth/cadastro')
+        if  password_is_valid(request, senha, confirma_senha) != 6:
+            if password_is_valid(request, senha, confirma_senha) == 1:
+                return redirect('/auth/cadastro/?senha_erro=1')
+            if password_is_valid(request, senha, confirma_senha) == 2:
+                return redirect('/auth/cadastro/?senha_erro=2')
+            if password_is_valid(request, senha, confirma_senha) == 3:
+                return redirect('/auth/cadastro/?senha_erro=3')
+            if password_is_valid(request, senha, confirma_senha) == 4:
+                return redirect('/auth/cadastro/?senha_erro=4')
+            if password_is_valid(request, senha, confirma_senha) == 5:
+                return redirect('/auth/cadastro/?senha_erro=5')
 
         # Vai tirar todos os espaços strip()
         if len(username.strip()) == 0 or len(email.strip()) == 0:

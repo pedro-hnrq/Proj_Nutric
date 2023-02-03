@@ -51,7 +51,24 @@
                         <br>
                         <div class="row">
                             <div class="col-md">
+                                
                                 <span class="bold">Senha</span>
+                                <br>
+
+                                {% if senha == '1' %}
+                                    <h4>Sua senha deve conter 6 ou mais caractertes</h4>
+                                    
+
+                                {% elif senha == '2' %}
+                                    <h4>As senhas não coincidem!</h4>
+
+                                {% elif senha == '3' %}
+                                    <h4>As senhas não coincidem 3</h4>
+                                {% elif senha == '4' %}
+                                    <h4>As senhas não coincidem 4</h4>
+                                {% elif senha == '5' %}
+                                    <h4>As senhas não coincidem 5</h4>
+                                {% endif %}
                                 <input class="form-control input-form" name="senha" type="password" placeholder="Digite sua senha...">
                             </div>
 

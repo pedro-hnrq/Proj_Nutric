@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce9238-f780-41ff-944e-a7d896c73a1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Proj_Nutric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Proj_Nutric.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autenticacao/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/autenticacao/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autenticacao/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/autenticacao/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutri_lab/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutri_lab/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/templates/dados_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/dados_paciente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/templates/dados_paciente_listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/dados_paciente_listar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/templates/pacientes.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/pacientes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/templates/plano_alimentar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/plano_alimentar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/templates/plano_alimentar_listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/templates/plano_alimentar_listar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plataforma/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/plataforma/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,22 +38,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/media/fts/FEITOSA SSD/Vs Code/Proj_Nutric",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/fts/FEITOSA SSD/Vs Code/Proj_Nutric&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
