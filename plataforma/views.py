@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from PIL import Image
-
+from fpdf import FPDF
 from autenticacao.models import Ativacao
 from .models import Pacientes, DadosPaciente, Refeicao, Opcao
 
@@ -194,13 +194,19 @@ def opcao(request, id_paciente):
 @login_required(login_url='/auth/logar/')
 def gera_pdf(request, id_paciente):
 
+     # aqui você pode recuperar as informações do paciente, opções, usuário etc.
     pacientes = Pacientes.objects.get(id=int(id_paciente))
     opcao = Opcao.objects.get(id=int(id_paciente))
     user = Ativacao.objects.get(id=int(id_paciente))
-    pdf = FPDF('P', 'mm', 'A4')
 
+    #Crie uma instância da classe FPDF
+    pdf = FPDF('P', 'mm', 'A4')
+    #Adicione uma página ao PDF
     pdf.add_page()
+    # Defina o tipo de fonte e tamanho que será utilizado
     pdf.set_font('Times', 'B', size=10)
+
+    # Adicione texto ao PDF
     pdf.text(80, 8, f'Nutricionista(o) {user.user}')
     pdf.set_font('helvetica', 'BI', size=12)
     pdf.set_fill_color(9, 121, 101)
@@ -209,11 +215,39 @@ def gera_pdf(request, id_paciente):
                                f'Email: {pacientes.email}\n                         '
                                f'Telefone: {pacientes.telefone}\n                         ', border=1)
 
-    # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
-    # pdf.image(f'{opcao.imagem}', 30, 60)
-    pdf.set_font('arial', 'I', size=12)
-    pdf.text(20, 60, f'Descrição: {opcao.descricao}\n ' )
 
+    # Adicione imagens ao PDF
+    image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
+    pdf.image(f'{opcao.imagem}', 30, 60)
+
+    # Defina o caminho onde o PDF será salvo
     caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
+    # Gere o PDF
     pdf.output(caminho_pdf)
+    # Retorne o arquivo gerado
     return redirect(f'/media/pdf/{pacientes.nome}.pdf')
+
+
+    # pacientes = Pacientes.objects.get(id=int(id_paciente))
+    # opcao = Opcao.objects.get(id=int(id_paciente))
+    # user = Ativacao.objects.get(id=int(id_paciente))
+    # pdf = FPDF('P', 'mm', 'A4')
+
+    # pdf.add_page()
+    # pdf.set_font('Times', 'B', size=10)
+    # pdf.text(80, 8, f'Nutricionista(o) {user.user}')
+    # pdf.set_font('helvetica', 'BI', size=12)
+    # pdf.set_fill_color(9, 121, 101)
+    # pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
+    #                            f'Idade: {pacientes.idade}\n                         '
+    #                            f'Email: {pacientes.email}\n                         '
+    #                            f'Telefone: {pacientes.telefone}\n                         ', border=1)
+
+    # # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
+    # # pdf.image(f'{opcao.imagem}', 30, 60)
+    # pdf.set_font('arial', 'I', size=12)
+    # pdf.text(20, 60, f'Descrição: {opcao.descricao}\n ' )
+
+    # caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
+    # pdf.output(caminho_pdf)
+    # return redirect(f'/media/pdf/{pacientes.nome}.pdf')

@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}"
+    <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
+
+    <script src="{% static 'autenticacao/js/senha.js'%}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    
+    
+    <style>
+        
+        #icon{
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-20%);
+            background: url("{% static 'autenticacao/img/show.png' %}");
+            background-size: cover;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        #icon.hide{
+            background: url("{% static 'autenticacao/img/hide.png' %}");
+            background-size: cover;
+        }
+        
+    </style>
 {% endblock  %}
 {% block 'titulo' %}Cadastre-se | NUTRE LIFE{% endblock %}
 
@@ -53,28 +78,32 @@
                             <div class="col-md">
                                 
                                 <span class="bold">Senha</span>
-                                <br>
+                                
+                                <input id="password" class="form-control input-form" name="senha" name="password" type="password" maxlength="6" placeholder="Digite sua senha...">
+                                <i id="icon" class="fa fa-eye"></i>
 
+                                <div id="icon" onclick="showHide()"></div>
+                                
+                                <br>                                 
                                 {% if senha == '1' %}
-                                    <h4>Sua senha deve conter 6 ou mais caractertes</h4>
-                                    
-
+                                    <span class="alert alert-danger" role="alert">Sua senha deve conter 6 ou mais caractertes</span>
                                 {% elif senha == '2' %}
-                                    <h4>As senhas não coincidem!</h4>
-
+                                    <span class="alert alert-danger" role="alert">As senhas não coincidem!</span>
                                 {% elif senha == '3' %}
-                                    <h4>As senhas não coincidem 3</h4>
+                                    <span class="alert alert-danger" role="alert">Sua senha não contem letras maiúsculas</span>
                                 {% elif senha == '4' %}
-                                    <h4>As senhas não coincidem 4</h4>
+                                    <span class="alert alert-danger" role="alert">Sua senha não contem letras minúsculas</span>
                                 {% elif senha == '5' %}
-                                    <h4>As senhas não coincidem 5</h4>
+                                    <span class="alert alert-danger" role="alert">Sua senha não contém números</span>
                                 {% endif %}
-                                <input class="form-control input-form" name="senha" type="password" placeholder="Digite sua senha...">
+                                </span>
+                                <!-- <img id="olho" onclick="eyeClick()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="/> -->
                             </div>
 
                             <div class="col-md">
                                 <span class="bold">Confirmar senha</span>
-                                <input class="form-control input-form" name="confirmar-senha" type="password" placeholder="Confirme sua senha...">
+                                <input id="password" class="form-control input-form" name="confirmar-senha" type="password" maxlength="6" placeholder="Confirme sua senha...">
+                                <!-- <img id="olho" onclick="eyeClick()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="/> -->
                             </div>
                         </div>
                         <br>

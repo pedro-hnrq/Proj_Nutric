@@ -17,15 +17,15 @@ def password_is_valid(request, password, confirm_password):
         return 2
 
     if not re.search('[A-Z]', password):
-        messages.add_message(request, constants.ERROR, 'Sua senha não contem letras maiúsculas')
+        # messages.add_message(request, constants.ERROR, 'Sua senha não contem letras maiúsculas')
         return 3
 
     if not re.search('[a-z]', password):
-        messages.add_message(request, constants.ERROR, 'Sua senha não contem letras minúsculas')
+        # messages.add_message(request, constants.ERROR, 'Sua senha não contem letras minúsculas')
         return 4
 
     if not re.search('[1-9]', password):
-        messages.add_message(request, constants.ERROR, 'Sua senha não contém números')
+        # messages.add_message(request, constants.ERROR, 'Sua senha não contém números')
         return 5
 
     return 6

@@ -24,17 +24,26 @@ def cadastro(request):
         email = request.POST.get('email')
         confirma_senha = request.POST.get('confirmar-senha')
 
-        if  password_is_valid(request, senha, confirma_senha) != 6:
-            if password_is_valid(request, senha, confirma_senha) == 1:
-                return redirect('/auth/cadastro/?senha_erro=1')
-            if password_is_valid(request, senha, confirma_senha) == 2:
-                return redirect('/auth/cadastro/?senha_erro=2')
-            if password_is_valid(request, senha, confirma_senha) == 3:
-                return redirect('/auth/cadastro/?senha_erro=3')
-            if password_is_valid(request, senha, confirma_senha) == 4:
-                return redirect('/auth/cadastro/?senha_erro=4')
-            if password_is_valid(request, senha, confirma_senha) == 5:
-                return redirect('/auth/cadastro/?senha_erro=5')
+        
+        error_codes = [1, 2, 3, 4, 5]
+        result = password_is_valid(request, senha, confirma_senha)
+
+        if result != 6:
+            for error_code in error_codes:
+                if result == error_code:
+                    return redirect(f'/auth/cadastro/?senha_erro={error_code}')
+
+        # if  password_is_valid(request, senha, confirma_senha) != 6:
+        #     if password_is_valid(request, senha, confirma_senha) == 1:
+        #         return redirect('/auth/cadastro/?senha_erro=1')
+        #     if password_is_valid(request, senha, confirma_senha) == 2:
+        #         return redirect('/auth/cadastro/?senha_erro=2')
+        #     if password_is_valid(request, senha, confirma_senha) == 3:
+        #         return redirect('/auth/cadastro/?senha_erro=3')
+        #     if password_is_valid(request, senha, confirma_senha) == 4:
+        #         return redirect('/auth/cadastro/?senha_erro=4')
+        #     if password_is_valid(request, senha, confirma_senha) == 5:
+        #         return redirect('/auth/cadastro/?senha_erro=5')
 
         # Vai tirar todos os espaços strip()
         if len(username.strip()) == 0 or len(email.strip()) == 0:
