@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block 'titulo' %}Cadastre-se | NUTRE LIFE{% endblock %}
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
 
@@ -7,28 +8,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     
-    
-    <style>
-        
-        #icon{
-            position: absolute;
-            top: 50%;
-            right: 10%;
-            transform: translateY(-20%);
-            background: url("{% static 'autenticacao/img/show.png' %}");
-            background-size: cover;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
-        #icon.hide{
-            background: url("{% static 'autenticacao/img/hide.png' %}");
-            background-size: cover;
-        }
-        
-    </style>
+
 {% endblock  %}
-{% block 'titulo' %}Cadastre-se | NUTRE LIFE{% endblock %}
+
 
 {% block 'body' %}
     <div class="container-fluid">
@@ -80,9 +62,9 @@
                                 <span class="bold">Senha</span>
                                 
                                 <input id="password" class="form-control input-form" name="senha" name="password" type="password" maxlength="6" placeholder="Digite sua senha...">
-                                <i id="icon" class="fa fa-eye"></i>
+                                
 
-                                <div id="icon" onclick="showHide()"></div>
+                                
                                 
                                 <br>                                 
                                 {% if senha == '1' %}

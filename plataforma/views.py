@@ -196,8 +196,7 @@ def gera_pdf(request, id_paciente):
 
      # aqui você pode recuperar as informações do paciente, opções, usuário etc.
     pacientes = Pacientes.objects.get(id=int(id_paciente))
-    opcao = Opcao.objects.get(id=int(id_paciente))
-    user = Ativacao.objects.get(id=int(id_paciente))
+    refeicaos = Refeicao.objects.filter(paciente=pacientes)
 
     #Crie uma instância da classe FPDF
     pdf = FPDF('P', 'mm', 'A4')
@@ -207,7 +206,7 @@ def gera_pdf(request, id_paciente):
     pdf.set_font('Times', 'B', size=10)
 
     # Adicione texto ao PDF
-    pdf.text(80, 8, f'Nutricionista(o) {user.user}')
+    pdf.text(80, 8, f'Nutricionista(o) {pacientes.nutri}')
     pdf.set_font('helvetica', 'BI', size=12)
     pdf.set_fill_color(9, 121, 101)
     pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
@@ -217,8 +216,12 @@ def gera_pdf(request, id_paciente):
 
 
     # Adicione imagens ao PDF
-    image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
-    pdf.image(f'{opcao.imagem}', 30, 60)
+    # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
+    # pdf.image(f'{opcao.imagem}', 30, 60)
+
+    # alt = 220    
+    # for refeicao in refeicaos: 
+    #     pdf.text(alt,alt+=20,str='helvetica',f'\n {refeicao.titulo}' )
 
     # Defina o caminho onde o PDF será salvo
     caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
@@ -228,26 +231,4 @@ def gera_pdf(request, id_paciente):
     return redirect(f'/media/pdf/{pacientes.nome}.pdf')
 
 
-    # pacientes = Pacientes.objects.get(id=int(id_paciente))
-    # opcao = Opcao.objects.get(id=int(id_paciente))
-    # user = Ativacao.objects.get(id=int(id_paciente))
-    # pdf = FPDF('P', 'mm', 'A4')
-
-    # pdf.add_page()
-    # pdf.set_font('Times', 'B', size=10)
-    # pdf.text(80, 8, f'Nutricionista(o) {user.user}')
-    # pdf.set_font('helvetica', 'BI', size=12)
-    # pdf.set_fill_color(9, 121, 101)
-    # pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
-    #                            f'Idade: {pacientes.idade}\n                         '
-    #                            f'Email: {pacientes.email}\n                         '
-    #                            f'Telefone: {pacientes.telefone}\n                         ', border=1)
-
-    # # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
-    # # pdf.image(f'{opcao.imagem}', 30, 60)
-    # pdf.set_font('arial', 'I', size=12)
-    # pdf.text(20, 60, f'Descrição: {opcao.descricao}\n ' )
-
-    # caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
-    # pdf.output(caminho_pdf)
-    # return redirect(f'/media/pdf/{pacientes.nome}.pdf')
+  

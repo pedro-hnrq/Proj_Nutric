@@ -1,7 +1,20 @@
 {% extends 'base_plataforma.html' %}
 {% load static %}
 {% block 'titulo' %}PACIENTES | NUTRE LIFE{% endblock %}
-<link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+{% block 'head_paciente' %}
+    <link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    
+    
+	
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#phone').mask('(00) 00000-0000'); 
+        });
+
+    </script>
+{% endblock %}
 {% block 'plataforma' %}
 
     {% if messages %}
@@ -108,7 +121,7 @@
                       <br>
 
                       <label>Telefone:</label>
-                      <input type="text" placeholder="+55 (00) 00000-0000" class="form-control" name="telefone">
+                      <input id="phone" type="text" placeholder="+55 (00) 00000-0000" class="form-control" name="telefone">
                       <br>
                       <input type="submit" class="btn btn-success btn-lg" value="Registar">
 
