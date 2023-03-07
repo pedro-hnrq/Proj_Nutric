@@ -16,7 +16,9 @@ class Pacientes(models.Model):
 
     def __str__(self):
         return self.nome
-
+    class Meta:
+        verbose_name = 'Paciente'
+        verbose_name_plural = 'Pacientes'
 
 class DadosPaciente(models.Model):
     paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE)

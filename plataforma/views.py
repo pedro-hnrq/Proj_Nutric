@@ -197,6 +197,8 @@ def gera_pdf(request, id_paciente):
      # aqui você pode recuperar as informações do paciente, opções, usuário etc.
     pacientes = Pacientes.objects.get(id=int(id_paciente))
     refeicaos = Refeicao.objects.filter(paciente=pacientes)
+    opcaos = Opcao.objects.all()
+    dados_paciente = DadosPaciente.objects.filter(paciente=pacientes)
 
     #Crie uma instância da classe FPDF
     pdf = FPDF('P', 'mm', 'A4')
@@ -209,19 +211,48 @@ def gera_pdf(request, id_paciente):
     pdf.text(80, 8, f'Nutricionista(o) {pacientes.nutri}')
     pdf.set_font('helvetica', 'BI', size=12)
     pdf.set_fill_color(9, 121, 101)
-    pdf.multi_cell(110, 5, f'\n                         Nome: {pacientes.nome}\n                         '
-                               f'Idade: {pacientes.idade}\n                         '
-                               f'Email: {pacientes.email}\n                         '
-                               f'Telefone: {pacientes.telefone}\n                         ', border=1)
-
-
+    foto_paciete = os.path.join(settings.BASE_DIR, pacientes.perfil.url[1::])
+    pdf.image(foto_paciete, x = 11, y = 13, w = 30, h = 30)
+    pdf.multi_cell(100, 6,         f'\n                               Nome: {pacientes.nome}\n                               '
+                            f'Idade: {pacientes.idade} anos\n                               '
+                            f'Email: {pacientes.email}\n                               '
+                            f'Telefone: {pacientes.telefone}\n                               ')
+    
+    
+    
     # Adicione imagens ao PDF
     # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
     # pdf.image(f'{opcao.imagem}', 30, 60)
+    al = 65
+    wd = 20
+    for refeicao in refeicaos:
+          pdf.text(wd,al,f'\n({refeicao.horario})' )   
+          al += 20
+    
+    alt = 60
+    wid = 15
+    # foto_descricao = os.path.join(settings.BASE_DIR, opcaos.imagem.url[1::])
+    # print(foto_descricao)
+    # pdf.image(foto_descricao, x = 20, y = 70, w = 30, h = 30)
+    wd= 25
+    hg = 72
+    for opcao in  opcaos:
+        pdf.text(80, 50, '---REFEIÇÕES---') 
+        pdf.text(wid,alt,'________________________________________________________________________')
+        pdf.text(wid,alt,f'{opcao.refeicao}' )       
+        pdf.text(wd, hg, f'{opcao.descricao}')
+        hg += 20
+        alt += 20
+        
+            
+                
+    for dp in dados_paciente:
+        pdf.multi_cell (150, 5, f'\n                               Altura: {dp.altura}m\n                               '
+                            f'Peso: {dp.peso}kg\n                               '
+                            f'Porcentual de Gordura: {dp.percentual_gordura}%\n                               '
+                            f'Percentual de Musculos: {dp.percentual_musculo}%\n                               ')
+        
 
-    # alt = 220    
-    # for refeicao in refeicaos: 
-    #     pdf.text(alt,alt+=20,str='helvetica',f'\n {refeicao.titulo}' )
 
     # Defina o caminho onde o PDF será salvo
     caminho_pdf = os.path.join(settings.MEDIA_ROOT, f'pdf/{pacientes.nome}.pdf')
