@@ -6,14 +6,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        
+    <!--  CSSS -->    
+    <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">    
+    
+ 
 
 <!--     BootStrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+<!--        BootStrap Js-->    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 
 <!--      Fontes Google-->
@@ -21,14 +25,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Skranji:wght@700&display=swap" rel="stylesheet">
 
-      <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
-<!--      <link rel="stylesheet" href="{% static 'autenticacao/css/base.css' %}">-->
+      
 
+
+<!--    Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
     <title>{% block 'titulo' %}{% endblock  %}</title>
-  </head>
-  <body>
+</head>
+<body>
+  {% block 'body' %}{% endblock  %}
     {% if user.is_authenticated %}
-      <nav style="background-image: linear-gradient(90deg, rgba(9,121,101,1) 16%, rgba(20,122,124,1) 53%, rgba(30,69,133,1) 92%);" class="navbar navbar-expand-lg navbar-dark">
+
+    
+      <!-- <nav style="background-image: linear-gradient(90deg, rgba(9,121,101,1) 16%, rgba(20,122,124,1) 53%, rgba(30,69,133,1) 92%);" class="navbar navbar-expand-lg navbar-dark">
         <a  style="margin-left: 45%; font-weight: bold; font-family: Skranji, cursive; font-size: 30px"    class="navbar-brand" href="{% url 'pacientes' %}">NUTRI LIFE</a>
         <button aria-controls="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-target="#navbarNav" data-toggle="collapse" type="button">
@@ -50,14 +60,16 @@
                         </li>
                     </ul>
           </div>
-      </nav>
+      </nav> -->
     {% endif %}
-
-    {% block 'body' %}{% endblock  %}
-
 
     
 
 
+    
+
+    <!-- <script>
+      $('.modal-backdrop').remove();
+    </script> -->
   </body>
 </html>

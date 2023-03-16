@@ -78,7 +78,7 @@
 
               <div class="modal-body">
                   <form action="{% url 'pacientes' %}" method="POST" enctype='multipart/form-data'>{% csrf_token %}
-
+                    
 
                       <div class="row">
                           <label>Foto Perfil:</label>
@@ -121,7 +121,7 @@
                       <br>
 
                       <label>Telefone:</label>
-                      <input id="phone" type="text" placeholder="+55 (00) 00000-0000" class="form-control" name="telefone">
+                      <input id="phone" type="text" placeholder="(00) 00000-0000" class="form-control" name="telefone">
                       <br>
                       <input type="submit" class="btn btn-success btn-lg" value="Registar">
 

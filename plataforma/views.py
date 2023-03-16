@@ -205,10 +205,13 @@ def gera_pdf(request, id_paciente):
     #Adicione uma página ao PDF
     pdf.add_page()
     # Defina o tipo de fonte e tamanho que será utilizado
-    pdf.set_font('Times', 'B', size=10)
+    pdf.set_font('Times', 'B', 16)
 
     # Adicione texto ao PDF
-    pdf.text(80, 8, f'Nutricionista(o) {pacientes.nutri}')
+   
+    # pdf.cell(35,10, 'Nutricionista:'1,0,'L',1)
+   
+    pdf.text(80, 8, f'Nutricionista {pacientes.nutri}')
     pdf.set_font('helvetica', 'BI', size=12)
     pdf.set_fill_color(9, 121, 101)
     foto_paciete = os.path.join(settings.BASE_DIR, pacientes.perfil.url[1::])
@@ -223,34 +226,43 @@ def gera_pdf(request, id_paciente):
     # Adicione imagens ao PDF
     # image = os.path.join(settings.MEDIA_ROOT, 'opcao/almoco.jpeg')
     # pdf.image(f'{opcao.imagem}', 30, 60)
-    al = 65
-    wd = 20
-    for refeicao in refeicaos:
-          pdf.text(wd,al,f'\n({refeicao.horario})' )   
-          al += 20
     
-    alt = 60
-    wid = 15
+    pdf.cell(0,10, ' Refeições: ', 1, 1, 'C', 1)
+    for opcao in opcaos:
+        
+        pdf. cell(0,10, f'  {opcao.refeicao}:',1,1,'L',1)
+        pdf. cell(1,10, f' -> {opcao.descricao}',1,1,'L',0)
+    
+    # for refeicao in refeicaos:
+    #       pdf.text(wd,al,f'\n({refeicao.horario})' )   
+    #       al += 20
+    
+    # alt = 60
+    # wid = 15
     # foto_descricao = os.path.join(settings.BASE_DIR, opcaos.imagem.url[1::])
     # print(foto_descricao)
     # pdf.image(foto_descricao, x = 20, y = 70, w = 30, h = 30)
-    wd= 25
-    hg = 72
-    for opcao in  opcaos:
-        pdf.text(80, 50, '---REFEIÇÕES---') 
-        pdf.text(wid,alt,'________________________________________________________________________')
-        pdf.text(wid,alt,f'{opcao.refeicao}' )       
-        pdf.text(wd, hg, f'{opcao.descricao}')
-        hg += 20
-        alt += 20
+    # wd= 25
+    # hg = 72
+    # for opcao in  opcaos:
+    #     pdf.text(80, 50, '---REFEIÇÕES---') 
+    #     pdf.text(wid,alt,'________________________________________________________________________')
+    #     pdf.text(wid,alt,f'{opcao.refeicao}' )       
+    #     pdf.text(wd, hg, f'{opcao.descricao}')
+    #     hg += 20
+    #     alt += 20
         
-            
+    pdf.cell(0,10, ' Dados do Paciente: ', 1, 1, 'C', 1)
+    for dado in dados_paciente:
+        pdf.cell(1,10, f' Data: {dado.data}',1,1,'L',0)
+        pdf.cell(1,10, f' Altura: {dado.altura}m',1,1,'L',1)
+        pdf.cell(1,10, f' Peso: {dado.peso}Kg',1,2,'L',1)       
                 
-    for dp in dados_paciente:
-        pdf.multi_cell (150, 5, f'\n                               Altura: {dp.altura}m\n                               '
-                            f'Peso: {dp.peso}kg\n                               '
-                            f'Porcentual de Gordura: {dp.percentual_gordura}%\n                               '
-                            f'Percentual de Musculos: {dp.percentual_musculo}%\n                               ')
+    
+    # pdf.multi_cell (150, 5, f'\n                               Altura: {dados_paciente.altura}m\n                               '
+    #                         f'Peso: {dados_paciente.peso}kg\n                               '
+    #                         f'Porcentual de Gordura: {dados_paciente.percentual_gordura}%\n                               '
+    #                         f'Percentual de Musculos: {dados_paciente.percentual_musculo}%\n                               ')
         
 
 

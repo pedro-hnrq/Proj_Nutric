@@ -4,6 +4,7 @@
     font-weight: bold;
     font-family: 'Marko One', serif;
     margin-left: 50%;
+    
 }
 svg{
     margin-top: -5px;
@@ -13,20 +14,20 @@ svg{
     height:90px;
 }
 .car-lateral{
+    
     overflow: hidden; position: relative;
 }
 
 .card-lateral{
-
+    
     background-color: #2159b4;
     margin-top: 20px;
-    padding: 10px;
+    padding: 10px;    
     color: white;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
     box-shadow: 5px 5px 5px gray;
-
 
 
 }
